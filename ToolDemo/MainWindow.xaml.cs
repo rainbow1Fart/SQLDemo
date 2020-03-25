@@ -109,7 +109,7 @@ namespace ToolDemo
         {
             if (_sqlHelper == null)
             {
-                MessageBox.Show("请先连接数据库");
+                MessageBox.Show("请先连接数据库！");
                 return;
             }
 
