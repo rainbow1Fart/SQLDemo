@@ -5,8 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToolDemo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="数据库工具" Width="900" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                <TextBlock Text="数据库IP地址：" Height="14" Margin="15 0 0 0"/>
+                <TextBox Name="TextBoxIpAddress" Height="21" Width="100" Text="192.168.0.100"/>
+
+                <TextBlock Text="数据库名：" Height="14" Margin="15 0 0 0"/>
+                <TextBox Name="TextBoxSQLName" Height="21" Width="100" Text="cwtc"/>
+
+                <TextBlock Text="数据库登陆用户名：" Height="14" Margin="15 0 0 0"/>
+                <TextBox Name="TextBoxUsr" Height="21" Width="100" Text="sa"/>
+
+                <TextBlock Text="数据库登陆密码：" Height="14" Margin="15 0 0 0"/>
+                <PasswordBox Name="PasswordBoxPwd" Height="21" Width="100" Password="ace123#"/>
+
+                <Button Content="连接" Height="21" Width="50" Margin="15 0 15 0 " Click="ButtonBase_OnClick"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"  Margin="5">
+                <TextBlock Text="查询起始日期：" Height="14" Margin="15 0 0 0"/>
+                <DatePicker  Name="DatePickerStart" Height="24"/>
+
+                <TextBlock Text="查询结束日期：" Height="14" Margin="15 0 0 0"/>
+                <DatePicker Name="DatePickerEnd" Height="24"></DatePicker>
+
+                <Button Name="ButtonQuery" Content="查询" Height="21" Width="50" Margin="5" Click="ButtonQuery_OnClick"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="15 0 15 0">
+                <Button Name="ButtonExport" Width="50" Height="21" Content="导出" Click="ButtonExport_OnClick" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <DockPanel>
+                <DataGrid Name="DataGrid" ItemsSource="{Binding ResultInfos}" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="姓名" Width="0.5*" Binding="{Binding Name}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="电话" Width="0.5*" Binding="{Binding Phone}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="性别" Width="0.3*" Binding="{Binding Sex}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="国籍" Width="0.5*" Binding="{Binding Country}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="身份证号" Width="*" Binding="{Binding IDCard}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="刷卡时间" Width="*" Binding="{Binding PassTime}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="刷卡状态" Width="*" Binding="{Binding PassState}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="刷卡位置" Width="*" Binding="{Binding PassLocation}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="所属公司" Width="*" Binding="{Binding Company}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </Grid>
     </Grid>
 </Window>
